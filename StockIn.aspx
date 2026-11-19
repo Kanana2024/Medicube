@@ -44,18 +44,38 @@
 
                     <div class="col-md-6">
                         <asp:Label ID="Label1" runat="server" Text="Select Medicine" CssClass="form-label" />
+                         <asp:RequiredFieldValidator
+                         ID="rfvMedicine"
+                         runat="server"
+                         ControlToValidate="ddlMedicine"
+                         InitialValue=""
+                         ErrorMessage="Please select a medicine."
+                         ForeColor="Red"
+                         Display="Dynamic" CssClass="form-label" ValidationGroup="vgStockIn"
+                             />
 
                         <asp:DropDownList ID="ddlMedicine" runat="server" CssClass="form-select"></asp:DropDownList>
+                       
  
                     </div>
 
                     <div class="col-md-6">
                         <asp:Label ID="Label2" runat="server" Text="Quantity Received" CssClass="form-label" />
-                        <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" placeholder="Enter quantity received" />   
+                        <asp:RangeValidator ID="rvQuantity" runat="server" ControlToValidate="txtQuantity" MinimumValue="1" MaximumValue="2147483647" Type="Integer" ErrorMessage="Enter a quantity greater than zero." 
+                            ForeColor="Red"
+                            Display="Dynamic" CssClass="form-label" ValidationGroup="vgStockIn" />
+                        &nbsp;<asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control" TextMode="Number" placeholder="Enter quantity received" />   
                     </div>
 
                     <div class="col-md-6">
                         <asp:Label ID="Label3" runat="server" Text="Date Received" CssClass="form-label" />  
+                        <asp:RequiredFieldValidator
+                        ID="rfvDate"
+                        runat="server"
+                        ControlToValidate="txtDateReceived"
+                        ErrorMessage="Please select a date."
+                        ForeColor="Red"
+                        Display="Dynamic" CssClass="form-label" ValidationGroup="vgStockIn" />
                         <asp:TextBox ID="txtDateReceived" runat="server"  CssClass="form-control" TextMode="Date" />       
                     </div>
 
@@ -70,7 +90,7 @@
                 <div class="d-flex justify-content-end gap-2 mt-4">
 
                     <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-outline-secondary" OnClick="btnClear_Click" CausesValidation="false" />
-                    <asp:Button ID="btnSave" runat="server" Text="Record Stock In" CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                    <asp:Button ID="btnSave" runat="server" Text="Record Stock In" CssClass="btn btn-primary" OnClick="btnSave_Click" ValidationGroup="vgStockIn" />
 
                 </div>
                 <asp:Label ID="lblMessage" runat="server" CssClass="d-block mt-3" />
@@ -113,6 +133,11 @@
 
                             <asp:BoundField DataField="Notes"
                                 HeaderText="Notes" />
+                             <asp:CommandField
+                             ShowEditButton="True"
+                             ShowDeleteButton="True"
+                             HeaderText="Actions"
+                             ButtonType="Link" />
 
                         </Columns>
 

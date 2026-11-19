@@ -85,6 +85,12 @@
                                 <a href="ViewSuppliers.aspx" class="nav-link">
                                     <i class="bi bi-list-ul me-2"></i> View Supplier
                                 </a>
+                                 <a href="SupplierPayment.aspx" class="nav-link">
+                                     <i class="bi bi-list-ul me-2"></i> Supplier Payment
+                                 </a>
+                                 <a href="PaymentHistory.aspx" class="nav-link">
+                                     <i class="bi bi-list-ul me-2"></i> Payment History
+                                 </a>
                             </div>
       
                             <a class="nav-link d-flex justify-content-between align-items-center"
@@ -126,13 +132,6 @@
                         </nav>
 
                     </div>
-
-
-                    <!-- Toggle Button
-                            <button class="btn btn-light toggle-btn shadow-sm" onclick="toggleSidebar()">
-                            <i class="bi bi-list fs-5"></i>
-                            </button>
-                    -->
 
 
                 </div>

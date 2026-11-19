@@ -83,7 +83,12 @@
 
                         <asp:BoundField
                             DataField="Address"
-                            HeaderText="Address" />            
+                            HeaderText="Address" />  
+                         <asp:CommandField
+                         ShowEditButton="True"
+                         ShowDeleteButton="True"
+                         HeaderText="Actions"
+                         ButtonType="Link" />
 
                     </Columns>
 

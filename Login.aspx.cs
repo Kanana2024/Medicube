@@ -32,6 +32,8 @@ namespace Medicube
             //Check if table has rows
             if (dt.Rows.Count > 0)
             {
+                // Save UserID in Session
+                Session["UserID"] = dt.Rows[0]["UserID"].ToString();
                 lblMessage.Text = "Successful";
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 Response.Redirect("~/index.aspx");

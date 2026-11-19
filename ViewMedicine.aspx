@@ -115,6 +115,11 @@
                             <asp:BoundField
                                 DataField="ExpiryDate"
                                 HeaderText="Expiry Date" />
+                             <asp:CommandField
+                             ShowEditButton="True"
+                             ShowDeleteButton="True"
+                             HeaderText="Actions"
+                             ButtonType="Link" />
 
                         </Columns>
 

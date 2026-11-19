@@ -60,6 +60,15 @@ namespace Medicube
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
+        /// rfvMedicine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMedicine;
+
+        /// <summary>
         /// ddlMedicine control.
         /// </summary>
         /// <remarks>
@@ -78,6 +87,15 @@ namespace Medicube
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
+        /// rvQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvQuantity;
+
+        /// <summary>
         /// txtQuantity control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,15 @@ namespace Medicube
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
+
+        /// <summary>
+        /// rfvDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDate;
 
         /// <summary>
         /// txtDateReceived control.
