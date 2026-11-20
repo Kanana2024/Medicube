@@ -55,9 +55,12 @@
 
             <div class="table-responsive">
 
-                <asp:GridView ID="gvSuppliers" runat="server" AutoGenerateColumns="False"    
+                <asp:GridView ID="gvSuppliers" runat="server" AutoGenerateColumns="False" DataKeyNames="SupplierID"   
                     CssClass="table table-hover align-middle"
-                    EmptyDataText="No suppliers found.">
+                    EmptyDataText="No suppliers found." OnRowEditing="gvSuppliers_RowEditing"
+                    OnRowCancelingEdit="gvSuppliers_RowCancelingEdit"
+                    OnRowUpdating="gvSuppliers_RowUpdating"
+                    OnRowDeleting="gvSuppliers_RowDeleting">
 
                     <Columns>
 

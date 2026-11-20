@@ -11,7 +11,26 @@ namespace Medicube
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
 
+            lnkUsers.Visible = Session["Role"] != null &&
+                               Session["Role"].ToString() == "Admin";
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            // Clear all session variables
+            Session.Clear();
+
+            // Abandon the current session
+            Session.Abandon();
+
+            // Redirect to Login page
+            Response.Redirect("~/Login.aspx");
         }
     }
-}
+  }

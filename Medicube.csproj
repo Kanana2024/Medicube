@@ -205,10 +205,12 @@
     <Content Include="bootstrap\javascript\bootstrap.js" />
     <Content Include="bootstrap\javascript\bootstrap.min.js" />
     <Content Include="index.aspx" />
+    <Content Include="index.css" />
     <Content Include="Login.aspx" />
     <Content Include="Medicine.css" />
     <Content Include="PaymentHistory.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Reports.aspx" />
     <Content Include="sidebar.css" />
     <Content Include="Signup.css" />
     <Content Include="Stock.aspx" />
@@ -217,6 +219,7 @@
     <Content Include="StockIn.css" />
     <Content Include="StockOut.aspx" />
     <Content Include="SupplierPayment.aspx" />
+    <Content Include="Users.aspx" />
     <Content Include="ViewMedicine.aspx" />
     <Content Include="ViewSuppliers.aspx" />
     <Content Include="Web.config" />
@@ -285,6 +288,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sidebar.Master.cs">
       <DependentUpon>Sidebar.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +329,13 @@
     </Compile>
     <Compile Include="SupplierPayment.aspx.designer.cs">
       <DependentUpon>SupplierPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewMedicine.aspx.cs">
       <DependentUpon>ViewMedicine.aspx</DependentUpon>

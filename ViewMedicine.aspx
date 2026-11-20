@@ -76,7 +76,9 @@
                         runat="server"
                         AutoGenerateColumns="False"
                         CssClass="table table-hover align-middle"
-                        EmptyDataText="No medicines found.">
+                        EmptyDataText="No medicines found." DataKeyNames="MedicineID" OnRowEditing="gvMedicines_RowEditing"
+                        OnRowCancelingEdit="gvMedicines_RowCancelingEdit" OnRowUpdating="gvMedicines_RowUpdating"
+                        OnRowDeleting="gvMedicines_RowDeleting">
 
                         <Columns>
 

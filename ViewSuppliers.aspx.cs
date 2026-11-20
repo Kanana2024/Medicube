@@ -74,5 +74,114 @@ namespace Medicube
             txtSearch.Text = "";
             LoadSuppliers();
         }
+        protected void gvSuppliers_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            // Set selected row to edit mode
+            gvSuppliers.EditIndex = e.NewEditIndex;
+
+            // Reload suppliers
+            LoadSuppliers();
+        }
+
+        protected void gvSuppliers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            // Cancel edit mode
+            gvSuppliers.EditIndex = -1;
+
+            // Reload suppliers
+            LoadSuppliers();
+        }
+
+        protected void gvSuppliers_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            // Get SupplierID
+            int supplierID = Convert.ToInt32(
+                gvSuppliers.DataKeys[e.RowIndex].Value);
+
+            // Get selected row
+            GridViewRow row = gvSuppliers.Rows[e.RowIndex];
+
+            // Declare variables
+            string supplierName = ((TextBox)row.Cells[1].Controls[0]).Text;
+            string contactPerson = ((TextBox)row.Cells[2].Controls[0]).Text;
+            string phone = ((TextBox)row.Cells[3].Controls[0]).Text;
+            string email = ((TextBox)row.Cells[4].Controls[0]).Text;
+            string address = ((TextBox)row.Cells[5].Controls[0]).Text;
+
+            // SQL query
+            string sql = @"UPDATE Suppliers
+                           SET SupplierName = @supplierName,
+                               ContactPerson = @contactPerson,
+                               Phone = @phone,
+                               Email = @email,
+                               Address = @address
+                           WHERE SupplierID = @supplierID";
+
+            // Create connection
+            SqlConnection con = new SqlConnection();
+
+            // Connection string
+            con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ELITEBOOK\\Documents\\Projects\\Medicube\\App_Data\\medicubedb.mdf;Integrated Security=True";
+
+            // Open connection
+            con.Open();
+
+            // Create command
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            // Bind parameters
+            cmd.Parameters.AddWithValue("@supplierName", supplierName);
+            cmd.Parameters.AddWithValue("@contactPerson", contactPerson);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@supplierID", supplierID);
+
+            // Execute query
+            cmd.ExecuteNonQuery();
+
+            // Close connection
+            con.Close();
+
+            // Exit edit mode
+            gvSuppliers.EditIndex = -1;
+
+            // Reload suppliers
+            LoadSuppliers();
+        }
+
+        protected void gvSuppliers_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            // Get SupplierID
+            int supplierID = Convert.ToInt32(
+                gvSuppliers.DataKeys[e.RowIndex].Value);
+
+            // SQL query
+            string sql = "DELETE FROM Suppliers WHERE SupplierID = @supplierID";
+
+            // Create connection
+            SqlConnection con = new SqlConnection();
+
+            // Connection string
+            con.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ELITEBOOK\\Documents\\Projects\\Medicube\\App_Data\\medicubedb.mdf;Integrated Security=True";
+
+            // Open connection
+            con.Open();
+
+            // Create command
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            // Bind parameter
+            cmd.Parameters.AddWithValue("@supplierID", supplierID);
+
+            // Execute query
+            cmd.ExecuteNonQuery();
+
+            // Close connection
+            con.Close();
+
+            // Reload suppliers
+            LoadSuppliers();
+        }
     }
 }
