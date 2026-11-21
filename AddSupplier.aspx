@@ -130,7 +130,7 @@
                 <asp:Button
                     ID="btnSave"
                     runat="server"
-                    Text="Save Medicine"
+                    Text="Save Supplier"
                     CssClass="btn btn-primary px-4"
                     OnClick="btnSave_Click"
                     CausesValidation="false" />

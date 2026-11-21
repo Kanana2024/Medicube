@@ -65,7 +65,7 @@ namespace Medicube
                     reader.Close();
 
                     // Redirect to Dashboard
-                    Response.Redirect("~/index.aspx");
+                    Response.Redirect("~/Dashboard.aspx");
                 }
                 else
                 {

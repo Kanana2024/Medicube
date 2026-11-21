@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Sidebar.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Medicube.index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Sidebar.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Medicube.index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Medicine.css" rel="stylesheet" />
-    <link href="index.css" rel="stylesheet" />
+    <link href="Dashboard.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </asp:Content>

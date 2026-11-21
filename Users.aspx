@@ -50,11 +50,34 @@
 
                         <asp:BoundField DataField="FullName"
                             HeaderText="Full Name"
-                            ReadOnly="True" />
+                            ReadOnly="False" />
 
                         <asp:BoundField DataField="Email"
                             HeaderText="Email"
-                            ReadOnly="True" />
+                            ReadOnly="False" />
+                         <asp:BoundField DataField="Phone"
+                         HeaderText="Phone"
+                         ReadOnly="False" />
+                        <asp:BoundField DataField="DOB"
+                            HeaderText="DOB"
+                            DataFormatString="{0:dd/MM/yyyy}"
+                            ReadOnly="False" />
+                        <asp:TemplateField HeaderText="Gender">
+                            <ItemTemplate>
+                                <%# Eval("Gender") %>
+                            </ItemTemplate>
+
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="ddlGender" runat="server"
+                                    SelectedValue='<%# Bind("Gender") %>'>
+                                    <asp:ListItem Text="Female" Value="Female" />
+                                    <asp:ListItem Text="Male" Value="Male" />
+                                </asp:DropDownList>
+                            </EditItemTemplate>
+                        </asp:TemplateField>
+                         <asp:BoundField DataField="Password"
+                         HeaderText="Password"
+                         ReadOnly="False" />
 
                         <asp:TemplateField HeaderText="Role">
 

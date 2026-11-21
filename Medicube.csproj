@@ -204,8 +204,8 @@
     <Content Include="bootstrap\javascript\bootstrap.esm.min.js" />
     <Content Include="bootstrap\javascript\bootstrap.js" />
     <Content Include="bootstrap\javascript\bootstrap.min.js" />
-    <Content Include="index.aspx" />
-    <Content Include="index.css" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="Dashboard.css" />
     <Content Include="Login.aspx" />
     <Content Include="Medicine.css" />
     <Content Include="PaymentHistory.aspx" />
@@ -246,12 +246,12 @@
     <Compile Include="AddSupplier.aspx.designer.cs">
       <DependentUpon>AddSupplier.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

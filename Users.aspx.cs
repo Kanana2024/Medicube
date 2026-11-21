@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
 
 namespace Medicube
 {
@@ -32,7 +33,7 @@ namespace Medicube
         {
             // Declare SQL query
             string sql = @"
-                SELECT UserID, FullName, Email, Role
+                SELECT UserID, FullName, Email,Phone,DOB,Gender,Address,Password, Role
                 FROM Users
                 ORDER BY UserID DESC";
 
@@ -74,57 +75,57 @@ namespace Medicube
 
         protected void gvUsers_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            // Get UserID
+            // Declare variables
             int userID = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Value);
 
-            // Get selected row
             GridViewRow row = gvUsers.Rows[e.RowIndex];
 
-            // Get DropDownList
-            DropDownList ddlRole = (DropDownList)row.FindControl("ddlRole");
+            string fullName = e.NewValues["FullName"].ToString();
+            string password = e.NewValues["Password"].ToString();
+            string phone = e.NewValues["Phone"].ToString();
+            string dob = e.NewValues["DOB"].ToString();
+            string gender = ((DropDownList)row.FindControl("ddlGender")).SelectedValue;
+            string role = ((DropDownList)row.FindControl("ddlRole")).SelectedValue;
 
-            // Get selected role
-            string role = ddlRole.SelectedValue;
-
-            // Get logged-in UserID
-            int loggedInUserID = Convert.ToInt32(Session["UserID"]);
-
-            // Prevent changing own Admin role
-            if (userID == loggedInUserID && role != "Admin")
-            {
-                lblMessage.Text = "You cannot remove your own Admin role.";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-
-            // Declare SQL query
+            // SQL query
             string sql = @"
-                UPDATE Users
-                SET Role = @Role
-                WHERE UserID = @UserID";
+            UPDATE Users
+            SET FullName = @FullName,
+                Password = CASE WHEN @Password = '' THEN Password ELSE @Password END,
+                Phone = @Phone,
+                DOB = @DOB,
+                Gender = @Gender,
+                Role = @Role
+            WHERE UserID = @UserID";
 
             // Create connection
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                // Open connection
-                con.Open();
+            SqlConnection con = new SqlConnection(connectionString);
 
-                // Create command
-                SqlCommand cmd = new SqlCommand(sql, con);
+            // Open connection
+            con.Open();
 
-                // Bind parameters
-                cmd.Parameters.AddWithValue("@Role", role);
-                cmd.Parameters.AddWithValue("@UserID", userID);
+            // Create command
+            SqlCommand cmd = new SqlCommand(sql, con);
 
-                // Execute query
-                cmd.ExecuteNonQuery();
-            }
+            // Bind parameters
+            cmd.Parameters.AddWithValue("@FullName", fullName);
+            cmd.Parameters.AddWithValue("@Password", password);
+            cmd.Parameters.AddWithValue("@Phone", phone);
+            cmd.Parameters.AddWithValue("@DOB", dob);
+            cmd.Parameters.AddWithValue("@Gender", gender);
+            cmd.Parameters.AddWithValue("@Role", role);
+            cmd.Parameters.AddWithValue("@UserID", userID);
 
-            gvUsers.EditIndex = -1;
+            // Execute query
+            cmd.ExecuteNonQuery();
 
-            lblMessage.Text = "User role updated successfully.";
+            // Close connection
+            con.Close();
+
+            lblMessage.Text = "User updated successfully.";
             lblMessage.ForeColor = System.Drawing.Color.Green;
 
+            gvUsers.EditIndex = -1;
             LoadUsers();
         }
 
@@ -135,11 +136,7 @@ namespace Medicube
             {
                 try
                 {
-                    // Get selected row index
-                    int rowIndex = Convert.ToInt32(e.CommandArgument);
-
-                    // Get UserID
-                    int userID = Convert.ToInt32(gvUsers.DataKeys[rowIndex].Value);
+                    int userID = Convert.ToInt32(e.CommandArgument);
 
                     // Get logged-in UserID
                     int loggedInUserID = Convert.ToInt32(Session["UserID"]);
